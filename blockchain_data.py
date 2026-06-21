@@ -118,7 +118,7 @@ if __name__ == "__main__":
 
     # A well-known, high-activity public XRPL address (Bitstamp exchange wallet)
     # This is a public exchange address — safe to use for testing
-    test_address = "rrpNnNLKrartuEqfJGpqyDwPj1BBN1ov7j"
+    test_address = "rDf5rV5izb5wTEFmFnJ5j48Vcjt7SrkFkv"
 
     print(f"\nFetching account info for: {test_address}")
     print("-" * 60)
@@ -147,8 +147,12 @@ if __name__ == "__main__":
         # The transaction details are nested inside tx > tx_json
         tx_json = tx.get("tx_json", {})
         tx_type = tx_json.get("TransactionType", "Unknown")
-        tx_hash = tx.get("hash", "N/A")
-        close_time = tx.get("close_time_iso", "N/A")
+
+        # hash and close_time_iso can appear at the top level OR inside tx_json
+        # depending on the API version — checking both places
+        tx_hash = tx.get("hash") or tx_json.get("hash", "N/A")
+        close_time = tx.get("close_time_iso") or tx_json.get("close_time_iso", "N/A")
+
 
         print(f"    Type:      {tx_type}")
         print(f"    Hash:      {tx_hash}")
