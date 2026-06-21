@@ -133,4 +133,4 @@ MSc Financial Technology & Innovation, Bayes Business School, 2026
 This project is part of a portfolio targeting roles in Fintech, RegTech, and Product Operations.  
 See also: [RegTech Compliance Dashboard](https://github.com/nattarw-tech/regtech-compliance-dashboard)
 
-Connect with me on LinkedIn: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-With-Me-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nisrin-attarwala/)
+Connect with me on LinkedIn: [![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect_With_Me-blue?logo=linkedin&logoColor=white)](https://www.linkedin.com/in/nisrin-attarwala/)
