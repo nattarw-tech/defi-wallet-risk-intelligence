@@ -73,7 +73,10 @@ def analyse_wallet(account_info: dict, transactions: list) -> dict:
     # Sequence number on XRPL is a lifetime transaction counter.
     # A wallet with a very high sequence number but very low XRP balance
     # has been extremely active but holds almost nothing — suspicious.
-    if lifetime_txns > 1_000_000 and balance_xrp < 50:
+    if lifetime_txns > 50_000_000 and balance_xrp < 20:
+        score += 25
+        flags.append(f"EXTREME volume low-balance account: {lifetime_txns:,} lifetime transactions, only {balance_xrp:.2f} XRP held — likely automated or exchange routing wallet")
+    elif lifetime_txns > 1_000_000 and balance_xrp < 50:
         score += 25
         flags.append(f"High-volume low-balance account: {lifetime_txns:,} lifetime transactions, only {balance_xrp:.2f} XRP held")
     elif lifetime_txns > 100_000 and balance_xrp < 20:
@@ -165,7 +168,7 @@ if __name__ == "__main__":
     from blockchain_data import get_wallet_info, get_wallet_transactions
 
     # Use the same verified test address from blockchain_data.py
-    test_address = "rJ7iWz3Ujbyn8ba1JuV8VucXHv92MeCYtW"
+    test_address = "rUeGuHYuWeaPgvNPWCudG2t6PXHd6PZQL5"
 
     print(f"\nRunning risk analysis on: {test_address}")
     print("=" * 60)
