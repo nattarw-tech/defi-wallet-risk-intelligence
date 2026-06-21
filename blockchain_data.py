@@ -12,20 +12,6 @@ XRPL_ENDPOINT = "https://xrplcluster.com"
 
 
 def get_wallet_transactions(wallet_address: str, limit: int = 50  ) -> list:
-    """
-    Fetches recent transactions for a given XRP Ledger wallet address.
-
-    The XRPL JSON-RPC API uses POST requests with a JSON body.
-    I use the 'account_tx' method, which returns a list of validated transactions involving the given account.
-
-    Args:
-        wallet_address: A valid XRPL wallet address (starts with 'r').
-        limit: How many transactions to fetch. Default is 50.
-
-    Returns:
-        A list of transaction dictionaries, or an empty list on failure.
-    """
-
     # This is the JSON payload I send to the XRPL node
     # method = what I want, 
     # params = the details of our request
@@ -118,7 +104,7 @@ if __name__ == "__main__":
 
     # A well-known, high-activity public XRPL address (Bitstamp exchange wallet)
     # This is a public exchange address — safe to use for testing
-    test_address = "rDf5rV5izb5wTEFmFnJ5j48Vcjt7SrkFkv"
+    test_address = "rJ7iWz3Ujbyn8ba1JuV8VucXHv92MeCYtW"
 
     print(f"\nFetching account info for: {test_address}")
     print("-" * 60)
@@ -147,12 +133,8 @@ if __name__ == "__main__":
         # The transaction details are nested inside tx > tx_json
         tx_json = tx.get("tx_json", {})
         tx_type = tx_json.get("TransactionType", "Unknown")
-
-        # hash and close_time_iso can appear at the top level OR inside tx_json
-        # depending on the API version — checking both places
         tx_hash = tx.get("hash") or tx_json.get("hash", "N/A")
         close_time = tx.get("close_time_iso") or tx_json.get("close_time_iso", "N/A")
-
 
         print(f"    Type:      {tx_type}")
         print(f"    Hash:      {tx_hash}")
