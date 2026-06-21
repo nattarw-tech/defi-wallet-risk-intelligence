@@ -4,6 +4,14 @@ Real-time AML screening and behavioural risk analysis for XRP Ledger wallets, po
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://defi-wallet-risk-intelligence-jye2qznapkns8qkff3orrb.streamlit.app/)
 
+## Screenshots
+
+![Risk Assessment Dashboard](Screenshot1.png)
+
+![Sanctions Screening](Screenshot2.png)
+
+![AI Generated Explainer](Screenshot3.png)
+
 ---
 
 ## Overview
