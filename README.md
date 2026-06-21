@@ -1,7 +1,6 @@
-```markdown
 # DeFi Wallet Risk Intelligence
 
-> Real-time AML screening and behavioural risk analysis for XRP Ledger wallets, powered by live on-chain data and AI-generated compliance narratives.
+Real-time AML screening and behavioural risk analysis for XRP Ledger wallets, powered by live on-chain data and AI-generated compliance narratives.
 
 [![Streamlit App](https://static.streamlit.io/badges/streamlit_badge_black_white.svg)](https://defi-wallet-risk-intelligence-jye2qznapkns8qkff3orrb.streamlit.app/)
 
