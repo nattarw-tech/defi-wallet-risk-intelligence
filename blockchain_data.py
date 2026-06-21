@@ -23,7 +23,8 @@ def get_wallet_transactions(wallet_address: str, limit: int = 50  ) -> list:
                 "ledger_index_min": -1,   # -1 means "from the earliest available"
                 "ledger_index_max": -1,   # -1 means "up to the most recent"
                 "limit": limit,
-                "forward": False          # False = most recent transactions first
+                "forward": False,          # False = most recent transactions first
+                "api_version": 2
             }
         ]
     }
@@ -71,7 +72,8 @@ def get_wallet_info(wallet_address: str) -> dict:
         "params": [
             {
                 "account": wallet_address,
-                "ledger_index": "validated"  # Use the latest validated ledger
+                "ledger_index": "validated",  # Use the latest validated ledger
+                "api_version": 2
             }
         ]
     }
