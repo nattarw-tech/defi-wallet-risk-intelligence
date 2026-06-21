@@ -128,7 +128,7 @@ This project is a **portfolio demonstration** and is not intended for production
 ## About
 
 Built by **Nisrin Shoukat Attarwala**  
-MSc Financial Technology & Innovation — Bayes Business School, 2026  
+MSc Financial Technology & Innovation, Bayes Business School, 2026  
 
 This project is part of a portfolio targeting roles in Fintech, RegTech, and Product Operations.  
 See also: [RegTech Compliance Dashboard](https://github.com/nattarw-tech/regtech-compliance-dashboard)
