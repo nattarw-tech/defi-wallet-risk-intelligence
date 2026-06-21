@@ -69,6 +69,17 @@ if analyse_button and wallet_input:
         st.error("That does not look like a valid XRPL address. Addresses start with 'r' and are at least 25 characters long.")
         st.stop()
 
+    # Run sanctions check FIRST — before any blockchain fetch
+    with st.spinner("Running sanctions screening..."):
+        early_sanctions = screen_wallet(wallet_input, [])
+
+    if not early_sanctions["clean"]:
+        st.error(f"⚠️ SANCTIONS ALERT — This address appears on the OFAC SDN list")
+        for hit in early_sanctions["screening_hits"]:
+            st.warning(hit)
+        st.info("Sanctions-listed addresses are blocked from further analysis. No additional data will be fetched.")
+        st.stop()
+
     with st.spinner("Fetching live blockchain data..."):
         account_info = get_wallet_info(wallet_input)
         transactions = get_wallet_transactions(wallet_input, limit=50)
@@ -77,7 +88,7 @@ if analyse_button and wallet_input:
         st.error("Could not retrieve data for that address. Please check the address and try again.")
         st.stop()
 
-    with st.spinner("Running risk analysis and sanctions screening..."):
+    with st.spinner("Running risk analysis..."):
         risk_result = analyse_wallet(account_info, transactions)
         sanctions_result = screen_wallet(wallet_input, transactions)
 
