@@ -65,7 +65,7 @@ Data flows in one direction: `blockchain_data` → `risk_engine` + `sanctions_sc
 
 | Component | Technology |
 |---|---|
-| Language | Python 3.12 |
+| Language | Python 3.11 |
 | Dashboard | Streamlit |
 | Data source | XRP Ledger public API (xrplcluster.com) |
 | Sanctions data | OFAC SDN list (US Treasury, fetched live) |
@@ -84,7 +84,7 @@ Data flows in one direction: `blockchain_data` → `risk_engine` + `sanctions_sc
 ### Setup
 
 ```bash
-git clone https://github.com/YOUR_USERNAME/defi-wallet-risk-intelligence.git
+git clone https://github.com/nattarw-tech/defi-wallet-risk-intelligence.git
 cd defi-wallet-risk-intelligence
 pip install -r requirements.txt
 ```
@@ -113,12 +113,25 @@ streamlit run app.py
 
 ---
 
+## Design Choices and Methodology
+
+The four risk signals were chosen to reflect the most common behavioural indicators used in on-chain AML analysis:
+
+- **Transaction velocity:** mirrors the layering stage of money laundering — rapid movement of funds to obscure origin
+- **Counterparty diversity:** reflects structuring behaviour — splitting funds across many addresses to avoid detection thresholds
+- **Payment concentration:** identifies pass-through accounts — wallets used purely to relay funds with no other on-chain activity
+- **Volume-to-balance ratio:** flags automated or exchange routing wallets — entities processing enormous value while holding almost nothing
+
+Thresholds were calibrated against observed behaviour on the XRP Ledger mainnet during development. A production system would derive thresholds statistically from labelled transaction data and incorporate graph-based multi-hop analysis to trace funds across counterparty networks.
+
+---
+
 ## Limitations and Disclaimer
 
 This project is a **portfolio demonstration** and is not intended for production compliance use. Key limitations:
 
 - Analysis is based on the last 50 transactions only, not full wallet history
-- The OFAC SDN list contains no XRP addresses at present; the sanctions demo uses a locally maintained address set
+- The OFAC SDN list does not currently publish XRP Ledger addresses in its CSV format. The sanctions screening logic is fully functional and correctly processes any address set; the locally maintained address set demonstrates a positive hit for portfolio purposes. A production deployment would integrate a commercial threat intelligence feed (e.g. Elliptic, TRM Labs) that maintains curated on-chain address databases across multiple blockchains.
 - Risk scoring uses simplified heuristics; a production tool would incorporate graph analysis, clustering, and entity resolution
 
 ---
