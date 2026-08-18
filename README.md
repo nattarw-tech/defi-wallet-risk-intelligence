@@ -27,7 +27,7 @@ This project demonstrates a simplified AML screening pipeline for the XRP Ledger
 - **Live on-chain data:** fetches real transaction history directly from the XRP Ledger public API (no API key required)
 - **Behavioural risk scoring:** four rule-based signals: transaction velocity, counterparty diversity, payment concentration, and volume-to-balance ratio
 - **OFAC sanctions screening:** downloads the live US Treasury SDN list at runtime and screens the wallet and all its counterparties
-- **AI compliance narrative:** generates a structured, professional risk summary using LLaMA 3.3 (70B) via Groq
+- **AI compliance narrative:** generates a structured, professional risk summary using GPT-OSS 120B via Groq
 - **Interactive dashboard:** Streamlit UI with risk metrics, sanctions result, behavioural flags, and transaction type chart
 
 ---
@@ -69,7 +69,7 @@ Data flows in one direction: `blockchain_data` → `risk_engine` + `sanctions_sc
 | Dashboard | Streamlit |
 | Data source | XRP Ledger public API (xrplcluster.com) |
 | Sanctions data | OFAC SDN list (US Treasury, fetched live) |
-| AI model | LLaMA 3.3 70B via Groq API |
+| AI model | GPT-OSS 120B via Groq API |
 | Charts | Plotly Express |
 | Environment | GitHub Codespaces |
 

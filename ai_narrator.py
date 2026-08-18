@@ -81,7 +81,7 @@ Do not add any disclaimers or caveats about being an AI."""
 
     try:
         response = client.chat.completions.create(
-            model="llama-3.3-70b-versatile",
+            model="openai/gpt-oss-120b",
             messages=[
                 {
                     "role": "user",
@@ -89,7 +89,8 @@ Do not add any disclaimers or caveats about being an AI."""
                 }
             ],
             temperature=0.3,   # Low temperature = more consistent, factual output
-            max_tokens=600
+            reasoning_effort="low",   # Narrative work, not a reasoning task
+            max_completion_tokens=1200
         )
         return response.choices[0].message.content.strip()
 

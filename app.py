@@ -31,7 +31,7 @@ with st.sidebar:
     - **Live on-chain data** from the XRP Ledger public API
     - **Behavioural scoring** across 4 risk signals
     - **OFAC SDN screening** against the live US Treasury sanctions list
-    - **AI narrative generation** using LLaMA 3 via Groq
+    - **AI narrative generation** using GPT-OSS 120B via Groq
 
     **Risk Levels**
     - 🟢 Low (0–24)
