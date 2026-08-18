@@ -124,6 +124,8 @@ The four risk signals were chosen to reflect the most common behavioural indicat
 
 Thresholds were calibrated against observed behaviour on the XRP Ledger mainnet during development. A production system would derive thresholds statistically from labelled transaction data and incorporate graph-based multi-hop analysis to trace funds across counterparty networks.
 
+**On the AI narrative:** the model is given the scoring output and sanctions results and asked only to write them up, so it is describing supplied facts rather than recalling regulation from memory. The prompt additionally pins the narrative to the US sanctions context (this tool screens the OFAC SDN list) and forbids the model from quoting specific statute sections, rule references or numeric filing deadlines, because language models state such details confidently even when wrong. The narrative is a drafting aid for a compliance analyst, not a substitute for one.
+
 ---
 
 ## Limitations and Disclaimer

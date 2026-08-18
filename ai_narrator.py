@@ -76,8 +76,19 @@ Write a narrative of 3 to 4 paragraphs covering:
 3. The sanctions screening outcome
 4. A recommended next step for the compliance team (e.g. enhanced due diligence, escalation, no action required)
 
-Write in a formal, professional tone. Do not use bullet points in the narrative — write in full paragraphs.
-Do not add any disclaimers or caveats about being an AI."""
+Write in a formal, professional tone, as flowing prose in full paragraphs.
+Do NOT use headings, section titles, tables, bold labels, bullet points or numbered lists anywhere
+in the narrative. It must read as continuous case-file prose, not as a structured report.
+Do not add any disclaimers or caveats about being an AI.
+
+Jurisdiction: this tool screens against the US Treasury OFAC SDN list, so sanctions obligations
+here are the US position. Do not import UK or EU rules into this narrative.
+
+Do not quote specific regulation numbers, statute sections, rule references or numeric filing
+deadlines. You get these wrong often enough that they cannot be trusted. Describe the obligation
+in plain words instead, for example "escalate for enhanced due diligence" or "this may require a
+report to the relevant financial intelligence unit", and leave the exact citation to the compliance
+team. Naming a body such as OFAC or FinCEN is fine. Naming a numbered provision is not."""
 
     try:
         response = client.chat.completions.create(
